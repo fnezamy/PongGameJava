@@ -3,8 +3,9 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 /**
  * 
- * AI paddle class
- *
+ * AI paddle class. Creates the bounding box around the AIPaddle and declares the movement for the paddle.
+ * If the AI is used, it tracks the movement of the ball and moves accordingly. If isTwoPlayers is true,
+ * then the ball is not tracked.
  */
 public class AIPaddle {
 	int x;//left and right
@@ -12,12 +13,13 @@ public class AIPaddle {
 	int width = 30;
 	int height = 100;
 	
-	int speed = 6;
+	int speed = 5;
 	
 	Rectangle boundingBox;
 	boolean goingUp = false;
 	boolean goingDown = false;
 	boolean isTwoPlayer = false;
+	
 	public AIPaddle(int x, int y){
 		this.x = x;
 		this.y = y;
@@ -32,15 +34,15 @@ public class AIPaddle {
 	public void tick(GamePanel game){//primitive sensor AI
 		boundingBox.setBounds(x, y, width, height);//set the bounds of the ai paddle
 		
-		if(isTwoPlayer = false){//if not two players
+		if(!isTwoPlayer){//if not two players
 			if(GamePanel.ball.topLeft.y < y - height && y >= 0)//set the ai to track the ball's height
 			y -= speed;//move up
 		else if(GamePanel.ball.bottomRight.y > y && y + height <= game.getHeight())//set the ai to track the ball's height
 			y += speed;//move down
 		}else{//if not two player
-			if(goingUp){//and going up is true
+			if(goingUp && y>=0){//and going up is true
 				y-=speed;//move up
-			}else if(goingDown){//else if going down
+			}else if(goingDown &&y + height < game.getHeight() ){//else if going down
 				y+=speed;//move down
 			}
 		}

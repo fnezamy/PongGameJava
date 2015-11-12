@@ -1,8 +1,21 @@
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+/**
+ * 	Handles all the inputs from keyboard.
+ * 	
+ * 	Declares the buttons player 1 will use and changes the PlayerPaddle's goingUp or goingDown to be true
+ * 	Declares the buttons player 2 will use and changes the AIPaddle's goingUp or goingDown to be true
+ * 
+ * @author Farhad Nezamy
+ *
+ */
 
 public class InputHandler implements KeyListener {
 
+	
+	/**
+	 * If a key is pressed
+	 */
 	public void keyPressed(KeyEvent e) {
 		int keyCode = e.getKeyCode();
 		//player 1 controls
@@ -22,6 +35,9 @@ public class InputHandler implements KeyListener {
 	}
 
 	
+	/**
+	 * If a key is released
+	 */
 	public void keyReleased(KeyEvent e) {
 		int keyCode = e.getKeyCode();
 		//Player 1 controls
@@ -42,7 +58,9 @@ public class InputHandler implements KeyListener {
 	}
 
 
-	//Auto generated because of implementing keylistener
+	/**
+	*	Auto generated because of implementing keylistener
+	*/
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		

@@ -1,7 +1,9 @@
 /**
- * Sets up the GUI and starts the game.
+ * CHANGED
  * 
- * @author sdexter72
+ * Calls MainMenu the menu screen
+ * 
+ * @author Farhad Nezamy
  *
  */
 public class Main{

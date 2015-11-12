@@ -8,18 +8,27 @@ import javax.swing.Timer;
 
 
 /**
+ * CHANGED
  * Animates a simple graphical game.
  * 
  * Uses a Swing Timer to advance the animation; keeps track of, and renders, all GameObjects. Handles all relevant game events.
  * 
- * @author sdexter72
+ * GamePanel inherits methods from JPanel in order use the paintComponent class. The frame is drawn on and
+ * the paintComponenet method calls a render method for the ball, AIPaddle and PlayerPaddle.
+ * 
+ * 
+ * @author Farhad Nezamy
  *
  */
 
 public class GamePanel extends JPanel implements ActionListener {
 	
    	/**
-	 * 
+	 *	Redeclare the width and height of the game so GameObject can access it.
+	 *
+	 *  Declare objects of GameObject, PlayerPaddle and Ball for composition purposes
+	 *  
+	 *  Declare player 1 and player 2 score
 	 */
 	static boolean gameRunning = false;//if the game is running
 	public static int WIDTH = 800;//the width of the game, needed so gameObject can access
@@ -28,7 +37,7 @@ public class GamePanel extends JPanel implements ActionListener {
 	static final int FRAME_RATE = 30; // animation proceeds at 30 frames per second
 	Timer t;	// animation timer
 	
-	public static GameObject ball; // bare-bones animation: just a simple object that slides across the panel
+	public static GameObject ball; // ball object
     public static PlayerPaddle player;//player paddle object
     public static AIPaddle ai;//ai paddle object
     Thread thread;
@@ -46,7 +55,7 @@ public class GamePanel extends JPanel implements ActionListener {
 		setBackground(Color.BLACK);
         t = new Timer(1000/FRAME_RATE, this);	
 		ball = new GameObject(450,125,30,30,5,5);//set the ball to start here
-		player = new PlayerPaddle(5,125);//set the paddle to start and move here
+		player = new PlayerPaddle(10,125);//set the paddle to start and move here
 		ai = new AIPaddle(750,125);//set the ai paddle to start and move here
 		
 	}
@@ -59,8 +68,8 @@ public class GamePanel extends JPanel implements ActionListener {
 		
 		g.setColor(Color.BLACK);
 		g.drawImage(image, 0, 0, getWidth(), getHeight(),null);
-		g.setColor(Color.WHITE);
-		g.drawLine(WIDTH/2,0,WIDTH/2,0);
+		//g.setColor(Color.WHITE);
+		//g.drawLine(WIDTH/2,0,WIDTH/2,0);
 		super.paintComponent(g);//calls the super constructor
 		setDoubleBuffered(true);//helps to reduce screen tearing
 		g.setColor(Color.CYAN);//sets the color of the score
@@ -100,6 +109,7 @@ public class GamePanel extends JPanel implements ActionListener {
 		repaint();//repaint the paddle
 		ai.tick(this);//handle the ai paddle's animation
 		repaint();	//repaint the paddle
+	
 	}
 	
 	/**
@@ -111,12 +121,17 @@ public class GamePanel extends JPanel implements ActionListener {
 		gameRunning = true;//the game is running
 		thread = new Thread();//initialize thread
 		thread.start();//start the thread
+		
 		try{
-			Thread.sleep((long) 0.1);//sets how fast the game should run
-		}catch(Exception e1){
-			e1.printStackTrace();
-		}
+			Thread.sleep((long)0.1);//sets how fast the game should run
+			}catch(Exception e1){
+				e1.printStackTrace();
+			}
 	}
+	
+	/**
+	 *	Exits the game
+	 */
 	static void stop(){//exits the game
 		gameRunning = false;
 		System.exit(0);

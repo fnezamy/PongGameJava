@@ -15,7 +15,7 @@ public class GameFrame {
         JFrame frame = new JFrame("Pong");
         frame.setMinimumSize(gameSize);//Set the minimum size of the game
 		frame.setPreferredSize(gameSize);//set the preferred size of the game
-		//frame.setMaximumSize(gameSize);//set the maximum size of the game
+		frame.setMaximumSize(gameSize);//set the maximum size of the game
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//close the game on clicking the X
         frame.setResizable(false);//can not resize the game
         frame.setLocationRelativeTo(null);//center the game frame
