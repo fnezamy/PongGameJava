@@ -3,7 +3,7 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 /**
- * Set the frame that the game runs on
+ * Set the frame that the game runs on.
  * 
  */
 
