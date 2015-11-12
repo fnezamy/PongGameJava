@@ -1,4 +1,7 @@
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.Point;
+import java.awt.Rectangle;
 
 /**
  * Models an 'object' that is rendered in the game display.
@@ -19,9 +22,12 @@ public class GameObject {
 	protected Point topLeft; // initial coordinates of top left corner of object
 	protected Point bottomRight; // initial coordinates of bottom left corner of
 									// object
-
-	protected int xSpeed;
+	protected static int speed = 4; //overall speed of the object
+	protected static int xSpeed; 
 	protected int ySpeed;
+	static Rectangle boundingBox; //declare a rectangle object
+	
+	protected int size = 20;//size of the object
 
 	/**
 	 * 
@@ -30,8 +36,16 @@ public class GameObject {
 	 * @return The two objects have collided.
 	 */
 
-	public static boolean collide(GameObject object1, GameObject object2) {
-		return true;
+	public static boolean collide() {
+			if(boundingBox.intersects(GamePanel.player.boundingBox)){//if the ball's bounding box intersects the players bounding box
+				xSpeed = speed;//change the direction of the ball 
+				return true;
+			}else if(boundingBox.intersects(GamePanel.ai.boundingBox)){//if the ball's bounding box intersects the AI's bounding box
+				xSpeed = -speed;//change the direction of the ball
+				return true;
+			}
+			else
+				return false;//no collision occurs
 	}
 
 	/**
@@ -40,11 +54,15 @@ public class GameObject {
 	 */
 
 	public GameObject(Point topLeft, Point bottomRight, int xSpeed, int ySpeed) {
-		this.topLeft = topLeft;
+		this.topLeft = topLeft; 	
 		this.bottomRight = bottomRight;
 
-		this.xSpeed = xSpeed;
+		GameObject.xSpeed = xSpeed;
 		this.ySpeed = ySpeed;
+		boundingBox = new Rectangle(topLeft.x,bottomRight.y,getWidth(),getHeight());//initialize the rectangle object
+		boundingBox.setBounds(topLeft.x,bottomRight.y,getWidth(),getHeight());//create a bounding box over the object
+		
+	
 	}
 
 	/**
@@ -75,7 +93,7 @@ public class GameObject {
 	 */
 
 	public void setXSpeed(int xSpeed) {
-		this.xSpeed = xSpeed;
+		GameObject.xSpeed = xSpeed;
 	}
 
 	/**
@@ -153,11 +171,36 @@ public class GameObject {
 	 */
 
 	public void step() {
+		boundingBox.setBounds(topLeft.x,bottomRight.y, getWidth(), getHeight());//sets the box around the ball to bounce the ball off of the pads
+		
+		if(topLeft.x<=0){//if the ball hits the left wall
+			GamePanel.p2score++;//player 2's score increases
+			if(GamePanel.p2score>=3){
+				GamePanel.stop();
+			}
+			xSpeed=speed;//change the direction of the ball
+		}else if (topLeft.x + size>= GamePanel.WIDTH - size){//if the ball hits the right wall
+			GamePanel.p1score++;//player 1's score increases
+			if(GamePanel.p1score>=3){
+				GamePanel.stop();
+			}
+			xSpeed = -speed;//change the direction of the ball
+		}
+		
+		if(bottomRight.y <= 0){//if the ball hits the top of the screen
+			ySpeed = speed;//change the direction of the ball
+		}else if(bottomRight.y + size >= GamePanel.HEIGHT - (size * 3)){//if the ball hits the bottom of the screen
+			ySpeed = -speed;//change the direction of the ball
+		}
+		
 		topLeft.x += xSpeed;
 		bottomRight.x += xSpeed;
 
 		topLeft.y += ySpeed;
+		
 		bottomRight.y += ySpeed;
+		
+		collide();//handle a collision 
 	}
 
 	/**
@@ -169,5 +212,15 @@ public class GameObject {
 	 */
 
 	public void bounce() {
+		boundingBox = new Rectangle(topLeft.x, bottomRight.y,getWidth(), getHeight());//initialize a boundingbox over the object to bounce
+		boundingBox.setBounds(topLeft.x, bottomRight.y,getWidth(),getHeight());//set the bounds of the box
+		
 	}
+	
+	//creates the graphics of the ball
+	public void render(Graphics g){
+		g.setColor(Color.RED);
+		g.fillOval(topLeft.x, bottomRight.y, getWidth(),getHeight());
+	}
+	
 }
