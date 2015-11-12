@@ -10,7 +10,8 @@ You play simply by pressing the "W" key to move up and the "S" key to move down.
 
 https://www.youtube.com/watch?v=kzM84kEv7d8&authuser=0
 
-I used this youtube tutorial to help me figure out the math behind how to make the player paddle and ai paddle move, how to set bounds on the ball and how to create a menu. 
+I used this youtube tutorial to help me figure out the math behind how to make the player paddle and ai paddle move, 
+how to set bounds on the ball and how to create a menu. 
 
 #Code Summary
 
