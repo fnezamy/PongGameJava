@@ -5,7 +5,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 /**
- * Sets up the main menu screen using a JFrame
+ * Sets up the main menu screen using a JFrame.
  * 
  * Each button has shares the same width and height, the two player check box allows checks if it is selected
  * and if it is, changes the value of isTwoPlayers in AIPaddle to be true.
