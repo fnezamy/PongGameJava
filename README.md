@@ -18,14 +18,19 @@ how to set bounds on the ball and how to create a menu.
 New classes : InputHandler, PlayerPaddle, AIPaddle, MainMenu, GameFrame.
 
 InputHandler methods - keyPressed, keyReleased, keyTyped
+
 PlayerPaddle methods - PlayerPaddle constructor, tick, render
+
 AIPaddle methods - AIPaddle constructor, tick, render
+
 MainMenu methods - MainMenu constructor, addButtons, addActions
+
 GameFrame methods - GameFrame constructor
 
 Changed classes - GamePanel, GameObject, Main
 
 GamePanel changed methods - Added a stop method to stop the game
+
 GameObject changed methods - Added a collide and bounce method to deal with the ball bouncing off the walls and colliding                                 with a paddle.
 
 Main changed methods - Added a single call to MainMenu to start the entire program.
