@@ -5,7 +5,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 /**
- * Sets up the main menu screen
+ * Sets up the main menu screen using a JFrame
  */
 
 public class MainMenu extends JFrame{
