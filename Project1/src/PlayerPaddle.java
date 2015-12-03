@@ -7,6 +7,9 @@ import java.awt.Rectangle;
  * Creates a bounding box around the player paddle and declares movement for the player paddle.
  * 
  */
+
+//!! shouldn't this extend GameObject?
+
 public class PlayerPaddle {
 	
 	int x;//left and right

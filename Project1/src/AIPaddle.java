@@ -34,6 +34,9 @@ public class AIPaddle {
 	public void tick(GamePanel game){//primitive sensor AI
 		boundingBox.setBounds(x, y, width, height);//set the bounds of the ai paddle
 		
+		//!! careful with your indentation and formatting of nested ifs
+		
+		
 		if(!isTwoPlayer){//if not two players
 			if(GamePanel.ball.topLeft.y < y - height && y >= 0)//set the ai to track the ball's height
 			y -= speed;//move up
