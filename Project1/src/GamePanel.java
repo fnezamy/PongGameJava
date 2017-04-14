@@ -6,7 +6,6 @@ import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-
 /**
  * CHANGED
  * Animates a simple graphical game.
