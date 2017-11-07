@@ -25,7 +25,7 @@ public class AIPaddle {
 		this.y = y;
 		boundingBox = new Rectangle(x,y,width,height);
 		boundingBox.setBounds(x,y,width,height);
-	    boundingBox = new Rectangle(x,y,width,height);//creates rectangle around object
+	    	boundingBox = new Rectangle(x,y,width,height);//creates rectangle around object
 		boundingBox.setBounds(x,y,width,height);// sets the bounds
 		
 		
@@ -34,14 +34,14 @@ public class AIPaddle {
 	public void tick(GamePanel game){//primitive sensor AI
 		boundingBox.setBounds(x, y, width, height);//set the bounds of the ai paddle
 		
-		//!! careful with your indentation and formatting of nested ifs
+		
 		
 		
 		if(!isTwoPlayer){//if not two players
 			if(GamePanel.ball.topLeft.y < y - height && y >= 0)//set the ai to track the ball's height
-			y -= speed;//move up
-		else if(GamePanel.ball.bottomRight.y > y && y + height <= game.getHeight())//set the ai to track the ball's height
-			y += speed;//move down
+				y -= speed;//move up
+			else if(GamePanel.ball.bottomRight.y > y && y + height <= game.getHeight())//set the ai to track the ball's height
+				y += speed;//move down
 		}else{//if not two player
 			if(goingUp && y>=0){//and going up is true
 				y-=speed;//move up
