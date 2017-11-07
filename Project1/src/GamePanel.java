@@ -37,10 +37,10 @@ public class GamePanel extends JPanel implements ActionListener {
 	Timer t;	// animation timer
 	
 	public static GameObject ball; // ball object
-    public static PlayerPaddle player;//player paddle object
-    public static AIPaddle ai;//ai paddle object
-    Thread thread;
-    static int p1score;
+    	public static PlayerPaddle player;//player paddle object
+    	public static AIPaddle ai;//ai paddle object
+    	Thread thread;
+    	static int p1score;
 	static int p2score;
 	BufferedImage image = new BufferedImage(WIDTH,HEIGHT,BufferedImage.TYPE_INT_RGB);//helps to buffer the image
 	
@@ -52,7 +52,7 @@ public class GamePanel extends JPanel implements ActionListener {
 	GamePanel () {
 		
 		setBackground(Color.BLACK);
-        t = new Timer(1000/FRAME_RATE, this);	
+        	t = new Timer(1000/FRAME_RATE, this);	
 		ball = new GameObject(450,125,30,30,5,5);//set the ball to start here
 		player = new PlayerPaddle(10,125);//set the paddle to start and move here
 		ai = new AIPaddle(750,125);//set the ai paddle to start and move here
