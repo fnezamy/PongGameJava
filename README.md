@@ -1,4 +1,4 @@
-# project1
+#Pong Game in Java
 
 #Description
 
